@@ -1,0 +1,44 @@
+<%- contentFor('body') %>
+
+<!-- cart section end -->
+        <section class="cart-section spad">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10">
+                        <div class="cart-table">
+                            <div class="cart-table-warp">
+                                <table>
+                                <thead>
+                                    <tr>
+                                        <th class="name-th">Nomes</th>
+                                        <th class="email-th">Email</th>
+                                        <th class="contact-th">Contact</th>
+                                        <th class="remover-th">Remover</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% for (let i=0;i<usuarios.length;i++){%>
+                                    <tr>
+                                        <td class="name-col"><h4><%= usuarios[i].name %></h4></td>
+                                        <td class="email-col"><h4><%= usuarios[i].email %></h4></td>
+                                        <td class="contact-col"><h4><%= usuarios[i].contact %></h4></td>
+                                        <td class="remover-col">
+                                            <div class="Action-Del-Ver">
+                                               <form action="/api/user/<%= usuarios[i]._id%>" method="POST">
+                                                <a href="/cliente" class="">
+                                                <button class="Remover" type="submit">Remover</button>
+                                                </a>
+                                                </form>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <%}%>
+                                </tbody>
+                            </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> 
+        <!-- cart section end -->

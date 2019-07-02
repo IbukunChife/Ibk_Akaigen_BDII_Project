@@ -1,0 +1,149 @@
+/* PAGE - HOME */
+
+.up-item {
+    align-content: flex-start;
+}
+
+.buttonLogout {
+    background: #f51167;
+    color: #fff !important;
+    padding: 5px;
+    border-radius: 10px;
+    margin-left: 20px;
+}
+
+.colorPink {
+    color: #f51167 !important;
+}
+
+
+/* PAGE - CADASTRAR PRODUTO */
+
+.pageCadastrarProduto {
+    padding: 50px 0px;
+}
+
+
+/* */
+
+.divCountCart {
+    width: 100px;
+    border-color: #fff;
+    display: flex;
+    margin: 0px auto;
+    padding-left: 20px;
+}
+
+.divCountCart .left {
+    width: 25px;
+    height: 25px;
+}
+
+.divCountCart button {
+    font-size: 40px;
+    color: #fff;
+    border-radius: 10px;
+    background: #f51167;
+    height: 30px;
+    width: 30px;
+    line-height: 10px;
+    border: 0px;
+    padding: 0px;
+    cursor: pointer;
+}
+
+.countCart {
+    width: 28px;
+    float: left;
+    border: none;
+    height: 35px;
+    line-height: 40px;
+    padding: 0;
+    font-size: 35px;
+    text-align: center;
+    background-color: transparent;
+}
+
+.buttonFinalizar {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 19px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.buttonAddCart {
+    background: transparent;
+    border: none;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+
+/* PAGE - LOGIN */
+
+.pageLogin {
+    padding: 40px;
+}
+
+.btnSubmit {
+    background: #f51167;
+    border: #f51167;
+    width: 150px !important;
+}
+
+.btnSubmit:hover {
+    background: #f91867;
+    border: #f91867;
+    width: 150px !important;
+}
+
+.Action-Del-Ver {
+    display: flex;
+    width: max-content;
+    margin: 0px auto;
+}
+
+.Remover {
+    margin-right: 10px;
+    background-color: #f91867;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+.Remover:hover {
+    background-color: #282828;
+}
+
+.Ver {
+    background-color: #f91867;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+.Ver:hover {
+    background-color: #282828;
+}
+
+.price-col {
+    text-align: center;
+}
+
+.name-col {
+    text-align: center;
+}
+
+.email-col {
+    text-align: center;
+}
+
+.contact-col {
+    text-align: center;
+}

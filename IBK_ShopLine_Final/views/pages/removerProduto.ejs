@@ -1,0 +1,50 @@
+<%- contentFor('body') %>
+
+<!-- cart section end -->
+        <section class="cart-section spad">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="cart-table">
+                            <div class="cart-table-warp">
+                                <table>
+                                <thead>
+                                    <tr>
+                                        <th class="product-th">Produtos</th>
+                                        <th class="price-th">Preço</th>
+                                        <th class="Action-th">Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% for (let i=0;i<products.length;i++){%>
+                                    <tr>
+                                        <td class="product-col">
+                                            <img src="/img/product/<%= products[i].images %>" alt="">
+                                            <div class="pc-title">
+                                                <h4><%= products[i].title %></h4>
+                                            </div>
+                                        </td>
+                                        <td class="price-col">R$<%= products[i].price %></h4></td>
+                                        <td>
+                                        <div class="Action-Del-Ver">
+                                            <form action="/api/product/<%= products[i]._id %>" method="POST">
+                                                <a href="/admin" class="">
+                                                <button class="Remover" type="submit">Remover</button>
+                                                </a>
+                                            </form>
+                                                <a href="/produto/atualizar/<%= products[i]._id %>" class="">
+                                                <button class="Ver" type="submit">Editar</button>
+                                                </a>
+                                        </div>
+                                        </td>
+                                    </tr>
+                                    <%}%>
+                                </tbody>
+                            </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- cart section end -->

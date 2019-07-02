@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+	<title> IbkShop </title>
+	<meta charset="UTF-8">
+	<meta name="description" content=" Divisima | eCommerce Template">
+	<meta name="keywords" content="divisima, eCommerce, creative, html">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Favicon -->
+	<link href="/img/favicon.ico" rel="shortcut icon"/>
+	<!-- Google Font -->
+	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,300i,400,400i,700,700i" rel="stylesheet">
+	<!-- Stylesheets -->
+	<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="/css/font-awesome.min.css"/>
+	<link rel="stylesheet" href="/css/flaticon.css"/>
+	<link rel="stylesheet" href="/css/slicknav.min.css"/>
+	<link rel="stylesheet" href="/css/jquery-ui.min.css"/>
+	<link rel="stylesheet" href="/css/owl.carousel.min.css"/>
+	<link rel="stylesheet" href="/css/animate.css"/>
+	<link rel="stylesheet" href="/css/style.css"/>
+
+	<link rel="stylesheet" href="/css/didier.css"/>
+</head>
+
+<body>
+  <!-- Page Preloder -->
+	<div id="preloder">
+		<div class="loader"></div>
+  </div>
+  
+  <!-- Header section -->
+	<header class="header-section">
+		<div class="header-top">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-2 text-center text-lg-left">
+						<!-- logo -->
+						<a href="/" class="site-logo">
+							<img src="/img/logo.png" alt="">
+						</a>
+					</div>
+					<div class="col-xl-6 col-lg-5">
+						<form class="header-search-form">
+							<input type="text" placeholder="Procurar no IBK SHOPLINE ....">
+							<button><i class="flaticon-search"></i></button>
+						</form>
+					</div>
+					<div class="col-xl-4 col-lg-5">
+						<div class="user-panel">
+							<div class="up-item">
+								<i class="flaticon-profile"></i>
+								<% if (!user) { %>
+									<a href="/login" class="colorPink">LogIn</a> Ou <a href="/register" class="colorPink">Registrar</a>
+								<% } else { %>
+									Olá, <%= user.name %>!
+								<% } %>
+							</div>
+
+							<% if (user) { %>
+								<div class="up-item">
+									<div class="shopping-card">
+										<i class="flaticon-bag"></i>
+										<% if (!user) { %>
+											<span>0</span>
+										<% } else { %>
+											<span><%= user.cart.length %></span>
+										<% } %>
+									</div>
+									<a href="/cart">Carrinho</a>
+								</div>
+								<div class="up-item">
+									<a href="/logout" class="buttonLogout">Sair</a>
+								</div>
+							<% } %>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<nav class="main-navbar">
+			<div class="container">
+				<!-- menu -->
+					<% 	if (!user || user.isAdmin === false) { %>
+					<ul class="main-menu">
+					<li><a href="/">Inicial</a></li>
+					<li><a href="#">Mulher</a></li>
+					<li><a href="#">Homen</a></li>
+					<li><a href="#">Joias
+						<span class="new">Novo</span>
+					</a></li>
+					<li><a href="#">Sapatos</a>
+						<ul class="sub-menu">
+							<li><a href="#">Tenis</a></li>
+							<li><a href="#">Chinelos</a></li>
+							<li><a href="#">Sapatos Social</a></li>
+							<li><a href="#">Botas</a></li>
+							<li><a href="#"></a></li>
+						</ul>
+					</li>
+					<li><a href="#">Pages</a>
+						<ul class="sub-menu">
+							<li><a href="./product.html">Product Page</a></li>
+							<li><a href="./category.html">Category Page</a></li>
+							<li><a href="/cart">Cart Page</a></li>
+							<li><a href="./checkout.html">Checkout Page</a></li>
+							<li><a href="./contact.html">Contact Page</a></li>
+						</ul>
+					</li>
+					<li><a href="#">Blog</a></li>
+					</ul>
+					
+				<% } else { %>
+					<ul class="main-menu">
+					<li><a href="/admin">Inicial</a></li>
+					<li><a href="#">Produtos</a>
+                    <ul class="sub-menu">
+							<li><a href="/produto/cadastrar">Cadastrar</a></li>
+							<li><a href="/produto/remover">Gerenciar</a></li>
+				    </ul>
+                    </li>
+					<li><a href="/cliente">Clientes</a>
+                    <ul class="sub-menu">
+                            <li><a href="/cliente/remover">Gerenciar</a></li>	
+				    </ul>
+                    </li>
+                    <li><a href="#">Contas</a></li>
+				</ul>	
+				<% } %>
+			</div>
+		</nav>
+	</header>
+	<!-- Header section end -->
+
+   <main>
+      <%- body %>
+   </main>
+
+<!-- Footer section -->
+	<section class="footer-section">
+		<div class="container">
+			<div class="footer-logo text-center">
+				<a href="index.html"><img src="./img/logo-light.png" alt=""></a>
+			</div>
+			<div class="row">
+				<div class="col-lg-3 col-sm-6">
+					<div class="footer-widget about-widget">
+						<h2>About</h2>
+						<p>Ibk ShopLIne, existante no mercado Brasileiro as mais de 20 anos. Sempre Diferenciado com seus productos de excelência qualidade e de renomado Internacional</p>
+						<img src="img/cards.png" alt="">
+					</div>
+				</div>
+				<div class="col-lg-3 col-sm-6">
+					<div class="footer-widget about-widget">
+						<h2>Questions</h2>
+						<ul>
+							<li><a href="">About Us</a></li>
+							<li><a href="">Track Orders</a></li>
+							<li><a href="">Returns</a></li>
+							<li><a href="">Jobs</a></li>
+							<li><a href="">Shipping</a></li>
+							<li><a href="">Blog</a></li>
+						</ul>
+						<ul>
+							<li><a href="">Partners</a></li>
+							<li><a href="">Bloggers</a></li>
+							<li><a href="">Support</a></li>
+							<li><a href="">Terms of Use</a></li>
+							<li><a href="">Press</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-3 col-sm-6">
+					<div class="footer-widget about-widget">
+						<h2>Questions</h2>
+						<div class="fw-latest-post-widget">
+							<div class="lp-item">
+								<div class="lp-thumb set-bg" data-setbg="img/blog-thumbs/1.jpg"></div>
+								<div class="lp-content">
+									<h6>what shoes to wear</h6>
+									<span>Oct 21, 2018</span>
+									<a href="#" class="readmore">Read More</a>
+								</div>
+							</div>
+							<div class="lp-item">
+								<div class="lp-thumb set-bg" data-setbg="img/blog-thumbs/2.jpg"></div>
+								<div class="lp-content">
+									<h6>trends this year</h6>
+									<span>Oct 21, 2018</span>
+									<a href="#" class="readmore">Read More</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3 col-sm-6">
+					<div class="footer-widget contact-widget">
+						<h2>Perguntas</h2>
+						<div class="con-info">
+							<span>C.</span>
+							<p>Ibk Shop Ltd </p>
+						</div>
+						<div class="con-info">
+							<span>B.</span>
+							<p>1245 Centro, Boa Vista Roraima </p>
+						</div>
+						<div class="con-info">
+							<span>T.</span>
+							<p>+53 345 7953 32453</p>
+						</div>
+						<div class="con-info">
+							<span>E.</span>
+							<p>contactus@ibkshop.com</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="social-links-warp">
+			<div class="container">
+				<div class="social-links">
+					<a href="" class="instagram"><i class="fa fa-instagram"></i><span>instagram</span></a>
+					<a href="" class="google-plus"><i class="fa fa-google-plus"></i><span>g+plus</span></a>
+					<a href="" class="pinterest"><i class="fa fa-pinterest"></i><span>pinterest</span></a>
+					<a href="" class="facebook"><i class="fa fa-facebook"></i><span>facebook</span></a>
+					<a href="" class="twitter"><i class="fa fa-twitter"></i><span>twitter</span></a>
+					<a href="" class="youtube"><i class="fa fa-youtube"></i><span>youtube</span></a>
+					<a href="" class="tumblr"><i class="fa fa-tumblr-square"></i><span>tumblr</span></a>
+				</div>
+
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --> 
+<p class="text-white text-center mt-5">Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | IbkShopLine </p>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+
+			</div>
+		</div>
+	</section>
+	<!-- Footer section end -->
+  
+  <!--====== Javascripts & Jquery ======-->
+	<script src="/js/jquery-3.2.1.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/jquery.slicknav.min.js"></script>
+	<script src="/js/owl.carousel.min.js"></script>
+	<script src="/js/jquery.nicescroll.min.js"></script>
+	<script src="/js/jquery.zoom.min.js"></script>
+	<script src="/js/jquery-ui.min.js"></script>
+	<script src="/js/main.js"></script>
+</body>
+</html> 

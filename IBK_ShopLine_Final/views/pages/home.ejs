@@ -1,0 +1,272 @@
+<%- contentFor('body') %>
+<!-- Hero section -->
+<section class="hero-section">
+    <div class="hero-slider owl-carousel">
+        <div class="hs-item set-bg" data-setbg="img/bg.jpg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-7 text-white">
+                        <span>Mais Vendidos</span>
+                        <h2>denim jackets</h2>
+                        <p> O inverno está chegando. Novidade em nossas lojas para você e Toda sua Familia. </p>
+                        <a href="#" class="site-btn sb-line">DETALHES</a>
+                        <a href="#" class="site-btn sb-white">ADICIONAR NO CARRINHO</a>
+                    </div>
+                </div>
+                <div class="offer-card text-white">
+                    <span>SOMENTE</span>
+                    <h2>60 R$</h2>
+                    <p>COMPRA AGORA</p>
+                </div>
+            </div>
+        </div>
+        <div class="hs-item set-bg" data-setbg="img/bg-2.jpg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-7 text-white">
+                        <span>Mais Vendidos</span>
+                        <h2>denim jackets</h2>
+                        <p> Adapta-se a moda mais perto de Você</p>
+                        <a href="#" class="site-btn sb-line">DETALHES</a>
+                        <a href="#" class="site-btn sb-white">ADICIONAR NO CARRINHO</a>
+                    </div>
+                </div>
+                <div class="offer-card text-white">
+                    <span>SOMENTE</span>
+                    <h2>29 R$</h2>
+                    <p>COMPRA AGORA</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="slide-num-holder" id="snh-1"></div>
+    </div>
+</section>
+<!-- Hero section end -->
+
+<!-- Features section -->
+<section class="features-section">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4 p-0 feature">
+                <div class="feature-inner">
+                    <div class="feature-icon">
+                        <img src="img/icons/1.png" alt="#">
+                    </div>
+                    <h2>Pagamento Seguro & Rápido</h2>
+                </div>
+            </div>
+            <div class="col-md-4 p-0 feature">
+                <div class="feature-inner">
+                    <div class="feature-icon">
+                        <img src="img/icons/2.png" alt="#">
+                    </div>
+                    <h2>Produtos Premium</h2>
+                </div>
+            </div>
+            <div class="col-md-4 p-0 feature">
+                <div class="feature-inner">
+                    <div class="feature-icon">
+                        <img src="img/icons/3.png" alt="#">
+                    </div>
+                    <h2>Entrega Grátis e Rápida</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Features section end -->
+
+<!-- letest product section -->
+<section class="top-letest-product-section">
+    <div class="container">
+        <div class="section-title">
+            <h2>NOVOS PRODUTOS</h2>
+        </div>
+        <div class="product-slider owl-carousel">
+				<% for (let i=0;i<products.length;i++){%>
+				<div class="product-item">
+					<div class="pi-pic">
+						<img src= "/img/product/<%=products[i].images %>" alt="">
+						<div class="pi-links">
+                                <% if (user) { %>
+									<form action="/api/user_cart/<%= user._id %>/add_cart/<%= products[i]._id %>" method="POST">
+                                        <a href="#" class="add-card"><i class="flaticon-bag"></i><span><button class="buttonAddCart" type="submit">ADD TO CART</button></span></a>
+                                        
+                                    </form>
+								<% } %>
+                            
+                        </div>
+					</div>
+					<div class="pi-text">
+						<h6>R$ <%= products[i].price %></h6>
+						<p><%= products[i].title %> </p>
+					</div>
+				</div>
+				<%}%>
+
+		</div>
+    </div>
+</section>
+<!-- letest product section end -->
+
+<!-- Product filter section -->
+<section class="product-filter-section">
+    <div class="container">
+        <div class="section-title">
+            <h2>CONSULTE OS PRODUTOS MAIS VENDIDOS</h2>
+        </div>
+        <ul class="product-filter-menu">
+            <li><a href="#">TOPS</a></li>
+            <li><a href="#">JUMPSUITS</a></li>
+            <li><a href="#">LINGERIE</a></li>
+            <li><a href="#">JEANS</a></li>
+            <li><a href="#">DRESSES</a></li>
+            <li><a href="#">COATS</a></li>
+            <li><a href="#">JUMPERS</a></li>
+            <li><a href="#">LEGGINGS</a></li>
+        </ul>
+        <div class="row">
+            <div class="col-lg-3 col-sm-6">
+                <div class="product-item">
+                    <div class="pi-pic">
+                        <img src="./img/product/5.jpg" alt="">
+                        <div class="pi-links">
+                            <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
+                            <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
+                        </div>
+                    </div>
+                    <div class="pi-text">
+                        <h6>$35,00</h6>
+                        <p>Flamboyant Pink Top </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="product-item">
+                    <div class="pi-pic">
+                        <div class="tag-sale">ON SALE</div>
+                        <img src="./img/product/6.jpg" alt="">
+                        <div class="pi-links">
+                            <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
+                            <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
+                        </div>
+                    </div>
+                    <div class="pi-text">
+                        <h6>$35,00</h6>
+                        <p>Black and White Stripes Dress</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="product-item">
+                    <div class="pi-pic">
+                        <img src="./img/product/7.jpg" alt="">
+                        <div class="pi-links">
+                            <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
+                            <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
+                        </div>
+                    </div>
+                    <div class="pi-text">
+                        <h6>$35,00</h6>
+                        <p>Flamboyant Pink Top </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="product-item">
+                    <div class="pi-pic">
+                        <img src="./img/product/8.jpg" alt="">
+                        <div class="pi-links">
+                            <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
+                            <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
+                        </div>
+                    </div>
+                    <div class="pi-text">
+                        <h6>$35,00</h6>
+                        <p>Flamboyant Pink Top </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="product-item">
+                    <div class="pi-pic">
+                        <img src="./img/product/9.jpg" alt="">
+                        <div class="pi-links">
+                            <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
+                            <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
+                        </div>
+                    </div>
+                    <div class="pi-text">
+                        <h6>$35,00</h6>
+                        <p>Flamboyant Pink Top </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="product-item">
+                    <div class="pi-pic">
+                        <img src="./img/product/10.jpg" alt="">
+                        <div class="pi-links">
+                            <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
+                            <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
+                        </div>
+                    </div>
+                    <div class="pi-text">
+                        <h6>$35,00</h6>
+                        <p>Black and White Stripes Dress</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="product-item">
+                    <div class="pi-pic">
+                        <img src="./img/product/11.jpg" alt="">
+                        <div class="pi-links">
+                            <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
+                            <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
+                        </div>
+                    </div>
+                    <div class="pi-text">
+                        <h6>$35,00</h6>
+                        <p>Flamboyant Pink Top </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="product-item">
+                    <div class="pi-pic">
+                        <img src="./img/product/12.jpg" alt="">
+                        <div class="pi-links">
+                            <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
+                            <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
+                        </div>
+                    </div>
+                    <div class="pi-text">
+                        <h6>$35,00</h6>
+                        <p>Flamboyant Pink Top </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center pt-5">
+            <button class="site-btn sb-line sb-dark">LOAD MORE</button>
+        </div>
+    </div>
+</section>
+<!-- Product filter section end -->
+
+
+<!-- Banner section -->
+<section class="banner-section">
+    <div class="container">
+        <div class="banner set-bg" data-setbg="img/banner-bg.jpg">
+            <div class="tag-new">NEW</div>
+            <span>New Arrivals</span>
+            <h2>STRIPED SHIRTS</h2>
+            <a href="#" class="site-btn">SHOP NOW</a>
+        </div>
+    </div>
+</section>
+<!-- Banner section end  -->

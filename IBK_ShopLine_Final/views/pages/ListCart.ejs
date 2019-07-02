@@ -1,0 +1,44 @@
+<%- contentFor('body') %>
+<div class="container">
+    <div class="pageCart">
+    
+        <!-- cart section end -->
+        <section class="cart-section spad">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="cart-table">
+                            <h3>Carinho <%=user_cart.name%></h3>
+                            <div class="cart-table-warp">
+                                <table>
+                                <thead>
+                                    <tr>
+                                        <th class="product-th">Produtos</th>
+                                        <th class="size-th">Tamanho</th>
+                                        <th class="total-th">Preço</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% for (let i=0;i<user_cart.cart.length;i++){%>
+                                    <tr>
+                                        <td class="product-col">
+                                            <img src="img/product/<%= user.cart[i].images %>" alt="">
+                                            <div class="pc-title">
+                                                <h4><%= user_cart.cart[i].title %></h4>
+                                                <p></p>
+                                            </div>
+                                        </td>
+                                        <td class="size-col"><h4>Size M</h4></td>
+                                        <td class="total-col"><h4>R$<%= user_cart.cart[i].price %></h4></td>
+                                    </tr>
+                                    <%}%>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- cart section end -->
+    </div>
+</div>

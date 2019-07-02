@@ -1,0 +1,50 @@
+<%- contentFor('body') %>
+
+<!-- cart section end -->
+        <section class="cart-section spad">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10">
+                        <div class="cart-table">
+                            <div class="cart-table-warp">
+                                <table>
+                                <thead>
+                                    <tr>
+                                        <th class="name-th">Nomes</th>
+                                        <th class="email-th">Email</th>
+                                        <th class="contact-th">Contact</th>
+                                        <th class="carinho-th">Carinho</th>
+                                        <th class="bought-th">Comprados</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% for (let i=0;i<usuarios.length;i++){%>
+                                    <tr>
+                                        <td class="name-col"><h4><%= usuarios[i].name %></h4></td>
+                                        <td class="email-col"><h4><%= usuarios[i].email %></h4></td>
+                                        <td class="contact-col"><h4><%= usuarios[i].contact %></h4></td>
+                                        <td class="carinho-col">
+                                            <div class="Action-Del-Ver">
+                                                <a href="/listCartUser/<%= usuarios[i]._id%>" class="">
+                                                <button class="Remover" type="submit">En Andamento</button>
+                                                </a>
+                                            </div>
+                                        </td>
+                                        <td class="bought-col">
+                                            <div class="Action-Del-Ver">
+                                                <a href="/listBoughtUser/<%=usuarios[i]._id%>" class="">
+                                                <button class="Ver" type="submit">Comprado</button>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <%}%>
+                                </tbody>
+                            </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> 
+        <!-- cart section end -->

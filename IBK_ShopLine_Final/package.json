@@ -1,0 +1,34 @@
+{
+    "name": "node-api",
+    "version": "1.0.0",
+    "description": "",
+    "main": "server.js",
+    "scripts": {
+        "start": "nodemon server.js",
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "dev": "nodemon server.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "bcryptjs": "^2.4.3",
+        "body-parser": "^1.19.0",
+        "connect-ensure-login": "^0.1.1",
+        "cookie-parser": "^1.4.4",
+        "cors": "^2.8.5",
+        "ejs": "^2.6.2",
+        "express": "^4.16.4",
+        "express-ejs-layouts": "^2.5.0",
+        "express-session": "^1.16.2",
+        "jsonwebtoken": "^8.5.1",
+        "mongoose": "^5.4.19",
+        "mongoose-relationship": "^0.1.5",
+        "passport": "^0.4.0",
+        "passport-local": "^1.0.0",
+        "require-dir": "^1.2.0"
+    },
+    "devDependencies": {
+        "nodemon": "^1.18.10"
+    }
+}

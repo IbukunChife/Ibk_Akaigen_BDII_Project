@@ -1,0 +1,148 @@
+<%- contentFor('body') %>
+<div class="container">
+    <div class="pageCart">
+    
+        <!-- cart section end -->
+        <section class="cart-section spad">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="cart-table">
+                            <h3>Seu Carinho</h3>
+                            <div class="cart-table-warp">
+                                <table>
+                                <thead>
+                                    <tr>
+                                        <th class="product-th">Produtos</th>
+                                        <th class="quy-th">Quantidade</th>
+                                        <th class="size-th">Tamanho</th>
+                                        <th class="total-th">Preço</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% for (let i=0;i<user.cart.length;i++){%>
+                                    <tr>
+                                        <td class="product-col">
+                                            <img src="img/product/<%= user.cart[i].images %>" alt="">
+                                            <div class="pc-title">
+                                                <h4><%= user.cart[i].title %></h4>
+                                                <p>R$<%= user.cart[i].price %></p>
+                                            </div>
+                                        </td>
+                                        <td class="quy-col">
+                                            
+                                                <div class="divCountCart">
+                                                    <form action="/api/user_cart/<%= user._id %>/rem_cart/<%= user.cart[i].product %>" method="POST">
+                                                        <button type="submit">-</button>
+                                                    </form>
+                                                    <input class="countCart" type="text" value="<%= user.cart[i].amout %>" disabled>
+                                                    <form action="/api/user_cart/<%= user._id %>/add_cart/<%= user.cart[i].product %>" method="POST">
+                                                        <button type="submit">+</button>
+                                                    </form>
+                                                </div>
+                                           
+                                        </td>
+                                        <td class="size-col"><h4>Size M</h4></td>
+                                        <td class="total-col"><h4>R$<%= user.cart[i].price %></h4></td>
+                                    </tr>
+                                    <%}%>
+                                </tbody>
+                            </table>
+                            </div>
+                            <div class="total-cost">
+                                <h6>Total <span>R$<%= totalCart %></span></h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 card-right">
+                        <form class="promo-code-form">
+                            <input type="text" placeholder="Enter promo code">
+                            <button>Submit</button>
+                        </form>
+                        <form action="/api/finalizar_compra/<%= user._id %>" method="POST">
+                            <a href="/cart" class="site-btn">
+                                <button class="buttonFinalizar" type="submit">Proceed to checkout</button>
+                            </a>
+                        </form>
+                        
+                        <a href="/" class="site-btn sb-dark">Continue shopping</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- cart section end -->
+    
+        <!-- Related product section -->
+        <section class="related-product-section">
+            <div class="container">
+                <div class="section-title text-uppercase">
+                    <h2>Continuando Comprando</h2>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="product-item">
+                            <div class="pi-pic">
+                                <div class="tag-new">Novo</div>
+                                <img src="./img/product/2.jpg" alt="">
+                                <div class="pi-links">
+                                    <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADICIONAR NO CARRINHO</span></a>
+                                    <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
+                                </div>
+                            </div>
+                            <div class="pi-text">
+                                <h6>$35,00</h6>
+                                <p>Black and White Stripes Dress</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="product-item">
+                            <div class="pi-pic">
+                                <img src="./img/product/5.jpg" alt="">
+                                <div class="pi-links">
+                                    <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADICIONAR NO CARRINHO</span></a>
+                                    <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
+                                </div>
+                            </div>
+                            <div class="pi-text">
+                                <h6>$35,00</h6>
+                                <p>Flamboyant Pink Top </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="product-item">
+                            <div class="pi-pic">
+                                <img src="./img/product/9.jpg" alt="">
+                                <div class="pi-links">
+                                    <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
+                                    <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
+                                </div>
+                            </div>
+                            <div class="pi-text">
+                                <h6>$35,00</h6>
+                                <p>Flamboyant Pink Top </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="product-item">
+                            <div class="pi-pic">
+                                <img src="./img/product/1.jpg" alt="">
+                                <div class="pi-links">
+                                    <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
+                                    <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
+                                </div>
+                            </div>
+                            <div class="pi-text">
+                                <h6>$35,00</h6>
+                                <p>Flamboyant Pink Top </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Related product section end -->
+    </div>
+</div>
