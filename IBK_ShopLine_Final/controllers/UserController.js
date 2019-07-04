@@ -3,6 +3,16 @@ const mongoose = require('mongoose');
 const User = mongoose.model('User');
 const Product = mongoose.model('Product');
 
+const neo4j = require('neo4j-driver').v1;
+// config DataBase Neo4j
+const dbs = require('../config/Neo4j').Neo4jURI;
+const us = require('../config/Neo4j').User;
+const ps = require('../config/Neo4j').Pass;
+// Neo4j connection
+const Neo4jdriver = neo4j.driver(dbs, neo4j.auth.basic(us, ps));
+const Neo4jsession = Neo4jdriver.session();
+
+
 module.exports = {
     async index(req, res) {
         const users = await User.find();
@@ -23,6 +33,16 @@ module.exports = {
                 return res.redirect('/register');
             } else {
                 //res.status(200).json("Welcome to the IBK ShopLine!");
+                Neo4jsession.run('CREATE(n:Cliente{email:{user_email}}) RETURN n.id', {
+                        user_email: user.email
+                    })
+                    .then(function(result) {
+                        console.log(result);
+                        Neo4jsession.close();
+                    })
+                    .catch(function(err) {
+                        console.log(err);
+                    });
                 return res.redirect('/login');
             }
         });
@@ -30,7 +50,9 @@ module.exports = {
 
     async update(req, res) {
         // "new:true = retorna o produto já com os novos valores"
-        const user = await User.findByIdAndUpdate(req.params.id, req.body, { new: true });
+        const user = await User.findByIdAndUpdate(req.params.id, req.body, {
+            new: true
+        });
         return res.json(user);
     },
 
@@ -53,7 +75,15 @@ module.exports = {
         }
 
         const cartChangeRemove = await User.findByIdAndUpdate(
-            req.params.id, { $pull: { cart: { "product": product } } }, { new: true }
+            req.params.id, {
+                $pull: {
+                    cart: {
+                        "product": product
+                    }
+                }
+            }, {
+                new: true
+            }
         );
 
         const detalhesProduct = await Product.findById(req.params.product);
@@ -69,7 +99,9 @@ module.exports = {
                         "images": detalhesProduct.images
                     }
                 }
-            }, { new: true }
+            }, {
+                new: true
+            }
         );
 
         //const newUser = await User.findById(req.params.id);
@@ -90,7 +122,15 @@ module.exports = {
         }
 
         const cartChangeRemove = await User.findByIdAndUpdate(
-            req.params.id, { $pull: { cart: { "product": product } } }, { new: true }
+            req.params.id, {
+                $pull: {
+                    cart: {
+                        "product": product
+                    }
+                }
+            }, {
+                new: true
+            }
         );
 
         if (count > 0) {
@@ -107,7 +147,9 @@ module.exports = {
                             "images": detalhesProduct.images
                         }
                     }
-                }, { new: true }
+                }, {
+                    new: true
+                }
             );
         }
 
@@ -122,10 +164,42 @@ module.exports = {
         for (var i = 0; i < cart.length; i++) {
 
             const cartChangeAdd = await User.findByIdAndUpdate(
-                req.params.id, { $addToSet: { bought: { "product": cart[i].product } } }, { new: true }
+                req.params.id, {
+                    $addToSet: {
+                        bought: {
+                            "product": cart[i].product
+                        }
+                    }
+                }, {
+                    new: true
+                }
             );
+            let cliente_email = user.email;
+            let title_product = await Product.findById(cart[i].product);
+            let title = title_product.title;
+
+            await Neo4jsession.run('MATCH (n:Cliente{email:{cliente_email}}),(m:Produto{title:{title}}) MERGE (n)<-[b:BOUGHT]->(m) RETURN b', {
+                    cliente_email: cliente_email,
+                    title: title
+                })
+                .then(function(result) {
+                    console.log(result);
+                    Neo4jsession.close();
+                })
+                .catch(function(err) {
+                    console.log(err);
+                });
+
             const cartChangeRemove = await User.findByIdAndUpdate(
-                req.params.id, { $pull: { cart: { "product": cart[i].product } } }, { new: true }
+                req.params.id, {
+                    $pull: {
+                        cart: {
+                            "product": cart[i].product
+                        }
+                    }
+                }, {
+                    new: true
+                }
             );
 
         }

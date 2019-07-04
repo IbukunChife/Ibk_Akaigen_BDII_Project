@@ -15,13 +15,17 @@ var User = require('./models/User');
 
 // Configure the local strategy for use by Passport.
 passport.use(
-    new LocalStrategy({ usernameField: 'email' }, (email, password, done) => {
+    new LocalStrategy({
+        usernameField: 'email'
+    }, (email, password, done) => {
         // Match user
         User.findOne({
             email: email
         }).then(user => {
             if (!user) {
-                return done(null, false, { message: 'That email is not registered' });
+                return done(null, false, {
+                    message: 'That email is not registered'
+                });
             }
 
             // Match password
@@ -30,7 +34,9 @@ passport.use(
                 if (isMatch) {
                     return done(null, user);
                 } else {
-                    return done(null, false, { message: 'Password incorrect' });
+                    return done(null, false, {
+                        message: 'Password incorrect'
+                    });
                 }
             });
         });
@@ -49,7 +55,9 @@ passport.deserializeUser(function(id, done) {
 //Iniciando o App
 const app = express();
 //Config
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
 app.use(bodyParser.json());
 app.use(cors());
 app.use(cookieParser());
@@ -62,15 +70,21 @@ app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, '/public')));
 
 // Initialize Passport and restore authentication state, if any, from the session.
-app.use(require('express-session')({ secret: 'keyboard cat', resave: false, saveUninitialized: false }));
+app.use(require('express-session')({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: false
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 
 //Iniciando e Testando o DB
-const mongo_uri = 'mongodb://localhost:27017/IbkShopLine';
-// const mongo_uri = 'mongodb+srv://ibukun_23:a.361051@ibkshop-0f1fs.mongodb.net/test?retryWrites=true';
+// const mongo_uri = 'mongodb://localhost:27017/didier';
+const mongo_uri = 'mongodb+srv://ibukun_23:a.361051@ibkshop-0f1fs.mongodb.net/test?retryWrites=true';
 
-mongoose.connect(mongo_uri, { useNewUrlParser: true }, function(err) {
+mongoose.connect(mongo_uri, {
+    useNewUrlParser: true
+}, function(err) {
     if (err) {
         throw err;
     } else {
@@ -85,7 +99,7 @@ app.use('/api', require("./routes"));
 app.use('/', require("./views/routes"));
 
 
-const PORT = "3010";
+const PORT = "4000";
 app.listen(PORT, () => {
     console.log('Running Server on Port ' + PORT);
 });

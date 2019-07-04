@@ -24,6 +24,7 @@
         "jsonwebtoken": "^8.5.1",
         "mongoose": "^5.4.19",
         "mongoose-relationship": "^0.1.5",
+        "neo4j-driver": "^1.7.5",
         "passport": "^0.4.0",
         "passport-local": "^1.0.0",
         "require-dir": "^1.2.0"
